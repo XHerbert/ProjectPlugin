@@ -1,0 +1,112 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using Microsoft.Office.Interop.MSProject;
+using ProjectAddIn.UserControlSpace;
+using Microsoft.Office.Tools.Ribbon;
+using ProjectAddIn.Base;
+
+namespace ProjectAddIn
+{
+    /// <summary>
+    /// 插件管理面板
+    /// </summary>
+    public partial class CustomPanel : UserControl
+    {
+        public CustomPanel()
+        {
+            InitializeComponent(); 
+        }
+
+        private void update_Click(object sender, EventArgs e)
+        {
+            CallSelectTaskField();
+        }
+        private static AddTaskPanel _add;
+        private void Create_Click(object sender, EventArgs e)
+        {
+            AddTaskPanel task = new AddTaskPanel();
+            task.Show();
+        }
+
+        private static AddTaskPanel CreateSingletonPanel()
+        {
+            if (_add == null)
+            {
+                _add = new AddTaskPanel();
+            }
+            return _add;
+        }
+
+        private void stop_Click(object sender, EventArgs e)
+        {
+            //停止项目
+            CallSelectRangeField();
+        }
+
+        /// <summary>
+        /// 根据任务状态进行背景填充的核心方法
+        /// </summary>
+        private void CallSelectTaskField()
+        {
+            foreach (Task task in Globals.ThisAddIn.Application.ActiveProject.Tasks)
+            {
+                Globals.ThisAddIn.Application.SelectTaskField(task.Index, "名称", false, 6, 0);
+                if (task.PercentComplete == 0)
+                {
+                    CallFont32Ex(CommonData.MappingColorState(CommonData.TaskState.Ready));
+                }
+                else if (task.PercentComplete == 100)
+                {
+                    CallFont32Ex(CommonData.MappingColorState(CommonData.TaskState.Complete));
+                }
+                else
+                {
+                    CallFont32Ex(CommonData.MappingColorState(CommonData.TaskState.Processing));
+                }
+            }
+        }
+
+        /// <summary>
+        /// 调用系统方法设置背景色
+        /// </summary>
+        /// <param name="bgColor"></param>
+        private void CallFont32Ex(Color bgColor)
+        {
+            object missing=Type.Missing;
+            Globals.ThisAddIn.Application.Font32Ex(
+                "微软雅黑", 9, missing, missing, 
+                missing, missing, missing,
+                bgColor, missing, missing);
+        }
+
+        /// <summary>
+        /// 停止任务
+        /// </summary>
+        private void CallSelectRangeField()
+        {
+            if (Globals.ThisAddIn.Application.ActiveSelection == null)
+                return;
+            foreach (Task task in Globals.ThisAddIn.Application.ActiveSelection.Tasks)
+            {
+                Globals.ThisAddIn.Application.SelectTaskField(task.Index, "名称", false, 6, 0);
+                //清除资源
+                task.ResourceNames = string.Empty;
+                //完成百分比
+                task.PercentComplete = 0;
+                //背景状态
+                CallFont32Ex(CommonData.MappingColorState(CommonData.TaskState.Stop));
+            }
+        }
+
+        private void SetDefaultFont()
+        {
+
+        }
+    }
+}
