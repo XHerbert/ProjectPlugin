@@ -1,5 +1,7 @@
 # ProjectPlugin
 ## Before  
-![Orginal Task](http://files.cnblogs.com/files/xhb-bky-blog/Original.bmp) 
+
+![](https://raw.githubusercontent.com/XHerbert/ProjectPlugin/master/ProjectAddIn/Images/Original.bmp) 
 ## After
-![Deal Task](http://files.cnblogs.com/files/xhb-bky-blog/pluginDealed.bmp) 
+
+![](https://raw.githubusercontent.com/XHerbert/ProjectPlugin/master/ProjectAddIn/Images/Original.bmp) 
