@@ -111,7 +111,7 @@
             this.taskNotes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
             this.taskNotes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.taskNotes.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.taskNotes.ForeColor = System.Drawing.Color.Maroon;
+            this.taskNotes.ForeColor = System.Drawing.Color.White;
             this.taskNotes.Location = new System.Drawing.Point(148, 161);
             this.taskNotes.Multiline = true;
             this.taskNotes.Name = "taskNotes";
@@ -122,12 +122,12 @@
             // 
             this.taskResource.BackColor = System.Drawing.Color.Black;
             this.taskResource.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.taskResource.ForeColor = System.Drawing.Color.Indigo;
+            this.taskResource.ForeColor = System.Drawing.Color.White;
             this.taskResource.Location = new System.Drawing.Point(148, 77);
             this.taskResource.Name = "taskResource";
             this.taskResource.Size = new System.Drawing.Size(357, 21);
             this.taskResource.TabIndex = 12;
-            this.taskResource.Text = "徐洪波";
+            this.taskResource.Text = "Xuhbd";
             // 
             // taskDuring
             // 
@@ -143,7 +143,7 @@
             // 
             this.taskName.BackColor = System.Drawing.Color.Black;
             this.taskName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.taskName.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.taskName.ForeColor = System.Drawing.Color.White;
             this.taskName.Location = new System.Drawing.Point(148, 35);
             this.taskName.Name = "taskName";
             this.taskName.Size = new System.Drawing.Size(357, 21);
