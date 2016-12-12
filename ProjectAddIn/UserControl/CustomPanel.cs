@@ -103,7 +103,7 @@ namespace ProjectAddIn
                 return;
             foreach (Task task in Globals.ThisAddIn.Application.ActiveSelection.Tasks)
             {
-                Globals.ThisAddIn.Application.SelectTaskField(task.Index, "名称", false, 6, 0);
+                Globals.ThisAddIn.Application.SelectTaskField(task.Index, "名称", false, 5, 0);
                 //清除资源
                 task.ResourceNames = string.Empty;
                 //完成百分比
