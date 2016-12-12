@@ -35,7 +35,5 @@ namespace ProjectAddIn.TaskModel
             get { return _notes; }
             set { _notes = value; }
         }
-
-
     }
 }

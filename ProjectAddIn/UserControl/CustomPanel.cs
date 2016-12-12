@@ -10,6 +10,7 @@ using Microsoft.Office.Interop.MSProject;
 using ProjectAddIn.UserControlSpace;
 using Microsoft.Office.Tools.Ribbon;
 using ProjectAddIn.Base;
+using System.Diagnostics;
 
 namespace ProjectAddIn
 {
@@ -56,18 +57,19 @@ namespace ProjectAddIn
         {
             foreach (Task task in Globals.ThisAddIn.Application.ActiveProject.Tasks)
             {
-                Globals.ThisAddIn.Application.SelectTaskField(task.Index, "名称", false, 6, 0);
+                if (task.ResourceNames == string.Empty) continue;//如果任务停止，不更新状态
+                Globals.ThisAddIn.Application.SelectTaskField(task.Index, "名称", false, 5, 0);
                 if (task.PercentComplete == 0)
                 {
-                    CallFont32Ex(CommonData.MappingColorState(CommonData.TaskState.Ready));
+                    CallFont32Ex(CommonData.MappingColorState(CommonData.TaskState.Ready),false);
                 }
                 else if (task.PercentComplete == 100)
                 {
-                    CallFont32Ex(CommonData.MappingColorState(CommonData.TaskState.Complete));
+                    CallFont32Ex(CommonData.MappingColorState(CommonData.TaskState.Complete), false);
                 }
                 else
                 {
-                    CallFont32Ex(CommonData.MappingColorState(CommonData.TaskState.Processing));
+                    CallFont32Ex(CommonData.MappingColorState(CommonData.TaskState.Processing), false);
                 }
             }
         }
@@ -76,12 +78,19 @@ namespace ProjectAddIn
         /// 调用系统方法设置背景色
         /// </summary>
         /// <param name="bgColor"></param>
-        private void CallFont32Ex(Color bgColor)
+        private void CallFont32Ex(Color bgColor,bool isStop)
         {
             object missing=Type.Missing;
+            Color white = Color.White;
+            Color blak = Color.Black;
+            Color useColor = blak;
+            if (isStop)
+            {
+                useColor = white;
+            }
             Globals.ThisAddIn.Application.Font32Ex(
                 "微软雅黑", 9, missing, missing, 
-                missing, missing, missing,
+                missing, useColor, missing,
                 bgColor, missing, missing);
         }
 
@@ -100,13 +109,41 @@ namespace ProjectAddIn
                 //完成百分比
                 task.PercentComplete = 0;
                 //背景状态
-                CallFont32Ex(CommonData.MappingColorState(CommonData.TaskState.Stop));
+                CallFont32Ex(CommonData.MappingColorState(CommonData.TaskState.Stop),true);
             }
         }
 
-        private void SetDefaultFont()
+        private void Watcher(Task task)
         {
+            //Debug.Write(task.Name + "##");
+            //Debug.WriteLine(task.PercentComplete);
+        }
 
+        private void expand_Click(object sender, EventArgs e)
+        {
+            foreach (Task item in Globals.ThisAddIn.Application.ActiveProject.Tasks)
+            {
+                if (item.OutlineChildren.Count > 0)
+                {
+                    item.OutlineShowAllTasks();
+                }
+            }
+        }
+
+        private void colapse_Click(object sender, EventArgs e)
+        {
+            foreach (Task item in Globals.ThisAddIn.Application.ActiveProject.Tasks)
+            {
+                if (item.OutlineChildren.Count > 0)
+                {
+                    item.OutlineHideSubTasks();
+                }
+            }
+        }
+
+        private void Standard_Click(object sender, EventArgs e)
+        {
+            //主要配置默认列，默认字体，默认大小，默认状态背景色
         }
     }
 }

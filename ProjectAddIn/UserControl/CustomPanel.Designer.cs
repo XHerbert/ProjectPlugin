@@ -31,6 +31,9 @@
             this.update = new System.Windows.Forms.Button();
             this.Create = new System.Windows.Forms.Button();
             this.stop = new System.Windows.Forms.Button();
+            this.Standard = new System.Windows.Forms.Button();
+            this.expand = new System.Windows.Forms.Button();
+            this.colapse = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // update
@@ -72,10 +75,52 @@
             this.stop.UseVisualStyleBackColor = true;
             this.stop.Click += new System.EventHandler(this.stop_Click);
             // 
+            // Standard
+            // 
+            this.Standard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Standard.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Standard.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Standard.Location = new System.Drawing.Point(11, 117);
+            this.Standard.Name = "Standard";
+            this.Standard.Size = new System.Drawing.Size(182, 32);
+            this.Standard.TabIndex = 3;
+            this.Standard.Text = "Pre Standard";
+            this.Standard.UseVisualStyleBackColor = true;
+            this.Standard.Click += new System.EventHandler(this.Standard_Click);
+            // 
+            // expand
+            // 
+            this.expand.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.expand.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.expand.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.expand.Location = new System.Drawing.Point(11, 155);
+            this.expand.Name = "expand";
+            this.expand.Size = new System.Drawing.Size(182, 32);
+            this.expand.TabIndex = 4;
+            this.expand.Text = "Expand All Tasks";
+            this.expand.UseVisualStyleBackColor = true;
+            this.expand.Click += new System.EventHandler(this.expand_Click);
+            // 
+            // colapse
+            // 
+            this.colapse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.colapse.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.colapse.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.colapse.Location = new System.Drawing.Point(11, 193);
+            this.colapse.Name = "colapse";
+            this.colapse.Size = new System.Drawing.Size(182, 32);
+            this.colapse.TabIndex = 5;
+            this.colapse.Text = "Colapse All Tasks";
+            this.colapse.UseVisualStyleBackColor = true;
+            this.colapse.Click += new System.EventHandler(this.colapse_Click);
+            // 
             // CustomPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.colapse);
+            this.Controls.Add(this.expand);
+            this.Controls.Add(this.Standard);
             this.Controls.Add(this.stop);
             this.Controls.Add(this.Create);
             this.Controls.Add(this.update);
@@ -90,5 +135,8 @@
         private System.Windows.Forms.Button update;
         private System.Windows.Forms.Button Create;
         private System.Windows.Forms.Button stop;
+        private System.Windows.Forms.Button Standard;
+        private System.Windows.Forms.Button expand;
+        private System.Windows.Forms.Button colapse;
     }
 }
