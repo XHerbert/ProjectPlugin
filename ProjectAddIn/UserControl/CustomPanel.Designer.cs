@@ -31,7 +31,7 @@
             this.update = new System.Windows.Forms.Button();
             this.Create = new System.Windows.Forms.Button();
             this.stop = new System.Windows.Forms.Button();
-            this.Standard = new System.Windows.Forms.Button();
+            this.Finish = new System.Windows.Forms.Button();
             this.expand = new System.Windows.Forms.Button();
             this.colapse = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -75,18 +75,18 @@
             this.stop.UseVisualStyleBackColor = true;
             this.stop.Click += new System.EventHandler(this.stop_Click);
             // 
-            // Standard
+            // Finish
             // 
-            this.Standard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Standard.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Standard.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.Standard.Location = new System.Drawing.Point(11, 117);
-            this.Standard.Name = "Standard";
-            this.Standard.Size = new System.Drawing.Size(182, 32);
-            this.Standard.TabIndex = 3;
-            this.Standard.Text = "Pre Standard";
-            this.Standard.UseVisualStyleBackColor = true;
-            this.Standard.Click += new System.EventHandler(this.Standard_Click);
+            this.Finish.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Finish.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Finish.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Finish.Location = new System.Drawing.Point(11, 117);
+            this.Finish.Name = "Finish";
+            this.Finish.Size = new System.Drawing.Size(182, 32);
+            this.Finish.TabIndex = 3;
+            this.Finish.Text = "Finish Project";
+            this.Finish.UseVisualStyleBackColor = true;
+            this.Finish.Click += new System.EventHandler(this.Standard_Click);
             // 
             // expand
             // 
@@ -120,12 +120,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.colapse);
             this.Controls.Add(this.expand);
-            this.Controls.Add(this.Standard);
+            this.Controls.Add(this.Finish);
             this.Controls.Add(this.stop);
             this.Controls.Add(this.Create);
             this.Controls.Add(this.update);
             this.Name = "CustomPanel";
-            this.Size = new System.Drawing.Size(205, 257);
+            this.Size = new System.Drawing.Size(205, 412);
             this.ResumeLayout(false);
 
         }
@@ -135,7 +135,7 @@
         private System.Windows.Forms.Button update;
         private System.Windows.Forms.Button Create;
         private System.Windows.Forms.Button stop;
-        private System.Windows.Forms.Button Standard;
+        private System.Windows.Forms.Button Finish;
         private System.Windows.Forms.Button expand;
         private System.Windows.Forms.Button colapse;
     }

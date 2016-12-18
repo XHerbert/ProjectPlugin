@@ -113,10 +113,20 @@ namespace ProjectAddIn
             }
         }
 
-        private void Watcher(Task task)
+        private void FinishTask()
         {
-            //Debug.Write(task.Name + "##");
-            //Debug.WriteLine(task.PercentComplete);
+            if (Globals.ThisAddIn.Application.ActiveSelection == null)
+                return;
+            foreach (Task task in Globals.ThisAddIn.Application.ActiveSelection.Tasks)
+            {
+                Globals.ThisAddIn.Application.SelectTaskField(task.Index, "名称", false, 5, 0);
+                //清除资源
+                task.ResourceNames = "徐洪波";
+                //完成百分比
+                task.PercentComplete = 100;
+                //背景状态
+                CallFont32Ex(CommonData.MappingColorState(CommonData.TaskState.Complete), false);
+            }
         }
 
         private void expand_Click(object sender, EventArgs e)
@@ -143,7 +153,7 @@ namespace ProjectAddIn
 
         private void Standard_Click(object sender, EventArgs e)
         {
-            //主要配置默认列，默认字体，默认大小，默认状态背景色
+            FinishTask();
         }
     }
 }
