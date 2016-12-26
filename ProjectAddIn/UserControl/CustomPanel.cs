@@ -99,7 +99,7 @@ namespace ProjectAddIn
         /// </summary>
         private void CallSelectRangeField()
         {
-            if (Globals.ThisAddIn.Application.ActiveSelection == null)
+            if (Globals.ThisAddIn.Application.ActiveSelection.Tasks == null)
                 return;
             foreach (Task task in Globals.ThisAddIn.Application.ActiveSelection.Tasks)
             {
@@ -115,7 +115,7 @@ namespace ProjectAddIn
 
         private void FinishTask()
         {
-            if (Globals.ThisAddIn.Application.ActiveSelection == null)
+            if (Globals.ThisAddIn.Application.ActiveSelection.Tasks == null)
                 return;
             foreach (Task task in Globals.ThisAddIn.Application.ActiveSelection.Tasks)
             {
@@ -154,6 +154,21 @@ namespace ProjectAddIn
         private void Standard_Click(object sender, EventArgs e)
         {
             FinishTask();
+        }
+
+        private void Init(Project activeProj)
+        {
+            //activeProj.AddNewColumn("完成百分比");
+            //activeProj.Application.AddNewColumn(PjFieldTypes.pjNumberField);
+            activeProj.Application.ColumnAlignment(PjAlignment.pjLeft);
+            activeProj.Application.ColumnDelete();
+            activeProj.Application.AddNewColumn(PjFieldTypes.pjFinishField);
+        }
+
+        private void InitProj_Click(object sender, EventArgs e)
+        {
+            Init(Globals.ThisAddIn.Application.ActiveProject);
+            
         }
     }
 }

@@ -34,6 +34,7 @@
             this.Finish = new System.Windows.Forms.Button();
             this.expand = new System.Windows.Forms.Button();
             this.colapse = new System.Windows.Forms.Button();
+            this.InitProj = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // update
@@ -114,10 +115,24 @@
             this.colapse.UseVisualStyleBackColor = true;
             this.colapse.Click += new System.EventHandler(this.colapse_Click);
             // 
+            // InitProj
+            // 
+            this.InitProj.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.InitProj.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.InitProj.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.InitProj.Location = new System.Drawing.Point(11, 231);
+            this.InitProj.Name = "InitProj";
+            this.InitProj.Size = new System.Drawing.Size(182, 32);
+            this.InitProj.TabIndex = 6;
+            this.InitProj.Text = "Init Project";
+            this.InitProj.UseVisualStyleBackColor = true;
+            this.InitProj.Click += new System.EventHandler(this.InitProj_Click);
+            // 
             // CustomPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.InitProj);
             this.Controls.Add(this.colapse);
             this.Controls.Add(this.expand);
             this.Controls.Add(this.Finish);
@@ -138,5 +153,6 @@
         private System.Windows.Forms.Button Finish;
         private System.Windows.Forms.Button expand;
         private System.Windows.Forms.Button colapse;
+        private System.Windows.Forms.Button InitProj;
     }
 }
